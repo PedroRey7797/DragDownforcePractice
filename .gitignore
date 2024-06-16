@@ -1,0 +1,43 @@
+# Ignorar directorios de casos de OpenFOAM
+processor*
+*/processor*
+processor*
+*/processor*
+
+# Ignorar archivos de malla generados
+constant/polyMesh/
+*/constant/polyMesh/
+
+# Ignorar archivos de solución
+[0-9]*.[0-9]*/
+*/[0-9]*.[0-9]*/
+
+# Ignorar archivos de log
+*.log
+*.Log
+log.*
+
+# Ignorar archivos de paraview
+*.foam
+*.vt*
+*.pvsm
+
+#Ignorar las geometrías
+*.obj
+
+# Ignorar archivos de residuos
+*.residuals
+
+# Ignorar archivos de configuración temporales
+*.bak
+*.tmp
+*.temp
+
+# Ignorar archivos de resultados de post-procesamiento
+postProcessing/
+*/postProcessing/
+
+# Ignorar otros archivos y directorios temporales
+tmp/
+*/tmp/
+*~
