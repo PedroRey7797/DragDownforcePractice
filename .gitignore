@@ -8,9 +8,16 @@ processor*
 constant/polyMesh/
 */constant/polyMesh/
 
-# Ignorar archivos de solución
+# Ignore top-level time directories (e.g., 0, 1, 2, ...)
+[0-9]*/
+
+# Ignore top-level time directories with decimals (e.g., 0.001, 100.5)
 [0-9]*.[0-9]*/
-*/[0-9]*.[0-9]*/
+
+# Ignore nested time directories at any level
+**/[0-9]*/
+**/[0-9]*.[0-9]*/
+
 
 # Ignorar archivos de log
 *.log
