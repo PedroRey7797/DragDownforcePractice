@@ -1,6 +1,27 @@
-// For surfaceFeaturesExtract in ../system/surfaceFeaturesExtractDict
+// For surfaceFeaturesExtract in ../system/surfaceFeaturesExtractDict and snappyHexMesh in ../system/snappyHexMeshDict
 
-geometry_file "motorBike.obj";
+//Geometry files
+geometry_file "motorBike.obj"; // Didn't found a solution to write only once the geo name. Currently, editing the four names when changing the goemetry file.
+geometry_name "motorBike";
+geometry_eMesh "motorBike.eMesh";
+geometry_layers "(motorBike).*";
+geometry_group "motorBikeGoupr";
+
+//refinementBox definition
+
+// Defining the box. in for "inicial" and fi for "final"
+refinementBox_X_in -1.0;
+refinementBox_X_fi 8.0; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+
+refinementBox_Y_in -0.7;
+refinementBox_Y_fi 0.7; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+
+refinementBox_Z_in 0.0;
+refinementBox_Z_fi 2.5; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+
+// mesh definition
+
+refinement_level 5;
 
 // For blockMesh in ../system/blockMeshDict
 
