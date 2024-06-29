@@ -1,8 +1,8 @@
-// For surfaceFeaturesExtract in surfaceFeaturesExtractDict
+// For surfaceFeaturesExtract in ../system/surfaceFeaturesExtractDict
 
 geometry_file "motorBike.obj";
 
-// For blockMesh in blockMeshDict
+// For blockMesh in ../system/blockMeshDict
 
 // Defining the box. in for "inicial" and fi for "final"
 X_in -5; // X : direction of moving
@@ -14,7 +14,10 @@ Y_fi 4; // Y : Lateral direction
 Z_in 0; // Z : Height direction
 Z_fi 8; // Z : Height direction
 
-//Defining the initial mesh size
+// Defining the initial mesh size
 N_cells_X 20; // X : direction of moving
 N_cells_Y 8; // Y : Lateral direction
 N_cells_Z 8; // Z : Height direction
+
+// For decomposePar in ../system/decomposeParDict
+N_procs 8;
