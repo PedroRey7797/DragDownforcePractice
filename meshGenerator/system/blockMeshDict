@@ -14,23 +14,25 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+# include "../include/settings"
+
 scale   1;
 
 vertices
 (
-    (-5 -4 0)
-    (15 -4 0)
-    (15  4 0)
-    (-5  4 0)
-    (-5 -4 8)
-    (15 -4 8)
-    (15  4 8)
-    (-5  4 8)
+    ($X_in  $Y_in  $Z_in) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+    ($X_fi  $Y_in  $Z_in) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+    ($X_fi  $Y_fi  $Z_in) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+    ($X_in  $Y_fi  $Z_in) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+    ($X_in  $Y_in  $Z_fi) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+    ($X_fi  $Y_in  $Z_fi) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+    ($X_fi  $Y_fi  $Z_fi) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+    ($X_in  $Y_fi  $Z_fi) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 );
 
 blocks
 (
-    hex (0 1 2 3 4 5 6 7) (20 8 8) simpleGrading (1 1 1)
+    hex (0 1 2 3 4 5 6 7) ($N_cells_X $N_cells_Y $N_cells_Z) simpleGrading (1 1 1) // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 );
 
 edges
