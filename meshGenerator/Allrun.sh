@@ -17,4 +17,10 @@ rm -r processor*
 
 runApplication checkMesh
 
+echo ---------------------------------------
+echo
+echo "Meshing done"
+echo
+echo
+
 #------------------------------------------------------------------------------
