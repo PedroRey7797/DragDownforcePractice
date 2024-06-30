@@ -5,7 +5,7 @@ geometry_file "motorBike.obj"; // Didn't found a solution to write only once the
 geometry_name "motorBike";
 geometry_eMesh "motorBike.eMesh";
 geometry_layers "(motorBike).*";
-geometry_group "motorBikeGoupr";
+geometry_group "motorBikeGoup";
 
 //refinementBox definition
 
@@ -21,7 +21,11 @@ refinementBox_Z_fi 2.5; // The "final" point is used to set the "inside point". 
 
 // mesh definition
 
-refinement_level 5;
+refinement_level_surface 5;
+refinement_level_box 3;
+cells_between_levels 5; // Used for castellated mesh
+
+N_layers 3; // Used for layers adition at lower wall (ground) and studied geometry.
 
 // For blockMesh in ../system/blockMeshDict
 

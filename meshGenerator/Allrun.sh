@@ -15,4 +15,6 @@ runApplication reconstructParMesh
 
 rm -r processor*
 
+runApplication checkMesh
+
 #------------------------------------------------------------------------------

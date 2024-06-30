@@ -80,7 +80,7 @@ castellatedMeshControls
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    nCellsBetweenLevels 3;
+    nCellsBetweenLevels $cells_between_levels; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 
 
 
@@ -93,7 +93,7 @@ castellatedMeshControls
     (
         {
             file $geometry_eMesh; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
-            level $refinement_level; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+            level $refinement_level_surface; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
         }
     );
 
@@ -113,7 +113,7 @@ castellatedMeshControls
         $geometry_name
         {
             // Surface-wise min and max refinement level
-            level (3 $refinement_level); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+            level (3 $refinement_level_surface); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
@@ -147,7 +147,7 @@ castellatedMeshControls
         refinementBox
         {
             mode inside;
-            levels ((1E15 $refinement_level)); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+            levels ((1E15 $refinement_level_box)); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
             // The first value sets the maximum cell size (Ex: 1E15 is very large, effectively unlimited).
             // The second value sets the refinement level, meaning each cell will be subdivided N times.
         }
@@ -223,11 +223,11 @@ addLayersControls
     {
         "(lowerWall).*"
         {
-            nSurfaceLayers 1;
+            nSurfaceLayers $N_layers; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
         }
         $geometry_layers // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
         {
-            nSurfaceLayers 1;
+            nSurfaceLayers $N_layers; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
         }
     }
 
