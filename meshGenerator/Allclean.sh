@@ -15,7 +15,7 @@ echo "FoamFile {
 
 echo ---------------------------------------
 echo
-echo "Mesh clean-up done"
+echo -e "${GREEN}Mesh clean-up done ${NC}"
 echo
 echo
 

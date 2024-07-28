@@ -7,7 +7,7 @@ cd ../
 echo
 echo
 echo ----------------------------------------------------
-echo Write the name for saving the mesh
+echo -e "${BLUE}Write the name for saving the mesh${NC}"
 echo ----------------------------------------------------
 echo
 read -r -p "----> " response
@@ -18,6 +18,6 @@ echo
 confirm_overwrite "$response" # Fucntion defined at DragDownForcePractice/functions/functions.sh
 
 cp -r meshGenerator "$response"
-echo "Mesh saved at '$response'"
+echo -e "${GREEN}Mesh saved at '$response'${NC}"
 echo
 echo
