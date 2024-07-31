@@ -13,4 +13,10 @@ echo "FoamFile {
     object      mesh;
 }" > mesh.foam
 
+echo ---------------------------------------
+echo
+echo -e "${GREEN}Mesh clean-up done ${NC}"
+echo
+echo
+
 #------------------------------------------------------------------------------

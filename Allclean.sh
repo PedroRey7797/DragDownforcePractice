@@ -6,7 +6,7 @@
 # Request user confirmation
 echo
 echo
-echo This operation will clean MESH and RESULTS
+echo -e "${BLUE}This operation will clean MESH and RESULTS${NC}"
 echo
 confirm
 

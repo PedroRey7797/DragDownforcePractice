@@ -1,0 +1,48 @@
+// For surfaceFeaturesExtract in ../system/surfaceFeaturesExtractDict and snappyHexMesh in ../system/snappyHexMeshDict
+
+//Geometry files
+geometry_file "motorBike.obj"; // Didn't found a solution to write only once the geo name. Currently, editing the four names when changing the goemetry file.
+geometry_name "motorBike";
+geometry_eMesh "motorBike.eMesh";
+geometry_layers "(motorBike).*";
+geometry_group "motorBikeGoup";
+
+//refinementBox definition
+
+// Defining the box. in for "inicial" and fi for "final"
+refinementBox_X_in -1.0;
+refinementBox_X_fi 8.0; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+
+refinementBox_Y_in -0.7;
+refinementBox_Y_fi 0.7; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+
+refinementBox_Z_in 0.0;
+refinementBox_Z_fi 2.5; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+
+// mesh definition
+
+refinement_level_surface 5;
+refinement_level_box 3;
+cells_between_levels 5; // Used for castellated mesh
+
+N_layers 3; // Used for layers adition at lower wall (ground) and studied geometry.
+
+// For blockMesh in ../system/blockMeshDict
+
+// Defining the box. in for "inicial" and fi for "final"
+X_in -5; // X : direction of moving
+X_fi 15; // X : direction of moving
+
+Y_in -4; // Y : Lateral direction
+Y_fi 4; // Y : Lateral direction
+
+Z_in 0; // Z : Height direction
+Z_fi 8; // Z : Height direction
+
+// Defining the initial mesh size
+N_cells_X 20; // X : direction of moving
+N_cells_Y 8; // Y : Lateral direction
+N_cells_Z 8; // Z : Height direction
+
+// For decomposePar in ../system/decomposeParDict
+N_procs 8;

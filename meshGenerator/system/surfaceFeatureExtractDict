@@ -14,7 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-motorBike.obj
+# include "../include/settings"
+
+$geometry_file // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 {
     // How to obtain raw features (extractFromFile || extractFromSurface)
     extractionMethod    extractFromSurface;

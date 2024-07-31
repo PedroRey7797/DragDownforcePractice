@@ -14,6 +14,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+# include "../include/settings"
+
 // Which of the steps to run
 castellatedMesh true;
 snap            true;
@@ -28,17 +30,17 @@ addLayers       true;
 // - to 'snap' the mesh boundary to the surface
 geometry
 {
-    motorBike.obj
+    $geometry_file // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
     {
         type triSurfaceMesh;
-        name motorBike;
+        name $geometry_name; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
     }
 
     refinementBox
     {
         type box;
-        min  (-1.0 -0.7 0.0);
-        max  ( 8.0  0.7 2.5);
+        min  ($refinementBox_X_in $refinementBox_Y_in $refinementBox_Z_in); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+        max  ($refinementBox_X_fi $refinementBox_Y_fi $refinementBox_Z_fi); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
     }
 }
 
@@ -78,7 +80,7 @@ castellatedMeshControls
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    nCellsBetweenLevels 3;
+    nCellsBetweenLevels $cells_between_levels; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 
 
 
@@ -90,8 +92,8 @@ castellatedMeshControls
     features
     (
         {
-            file "motorBike.eMesh";
-            level 6;
+            file $geometry_eMesh; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+            level $refinement_level_surface; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
         }
     );
 
@@ -108,17 +110,17 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        motorBike
+        $geometry_name
         {
             // Surface-wise min and max refinement level
-            level (5 6);
+            level (3 $refinement_level_surface); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
             patchInfo
             {
                 type wall;
-                inGroups (motorBikeGroup);
+                inGroups ($geometry_group); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
             }
         }
     }
@@ -145,7 +147,9 @@ castellatedMeshControls
         refinementBox
         {
             mode inside;
-            levels ((1E15 4));
+            levels ((1E15 $refinement_level_box)); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+            // The first value sets the maximum cell size (Ex: 1E15 is very large, effectively unlimited).
+            // The second value sets the refinement level, meaning each cell will be subdivided N times.
         }
     }
 
@@ -158,7 +162,7 @@ castellatedMeshControls
     // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    locationInMesh (3.0001 3.0001 0.43);
+    locationInMesh ($refinementBox_X_fi $refinementBox_Y_fi $refinementBox_Z_fi); // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 
 
     // Whether any faceZones (as specified in the refinementSurfaces)
@@ -217,9 +221,13 @@ addLayersControls
     // Per final patch (so not geometry!) the layer information
     layers
     {
-        "(lowerWall|motorBike).*"
+        "(lowerWall).*"
         {
-            nSurfaceLayers 1;
+            nSurfaceLayers $N_layers; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+        }
+        $geometry_layers // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
+        {
+            nSurfaceLayers $N_layers; // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
         }
     }
 

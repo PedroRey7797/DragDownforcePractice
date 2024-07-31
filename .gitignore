@@ -7,6 +7,8 @@ processor*
 # Ignorar archivos de malla generados
 constant/polyMesh/
 */constant/polyMesh/
+*.eMesh
+*.extendedFeatureEdgeMesh
 
 # Ignore top-level time directories (e.g., 0, 1, 2, ...)
 [0-9]*/
