@@ -5,7 +5,7 @@ geometry_file "motorBike.obj"; // Didn't found a solution to write only once the
 geometry_name "motorBike";
 geometry_eMesh "motorBike.eMesh";
 geometry_layers "(motorBike).*";
-geometry_group "motorBikeGoup";
+geometry_group "motorBikeGroup";
 
 //refinementBox definition
 
