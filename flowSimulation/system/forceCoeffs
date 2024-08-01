@@ -6,6 +6,8 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 
+#include        "../include/settings"
+
 forceCoeffs1
 {
     type            forceCoeffs;
@@ -17,7 +19,7 @@ forceCoeffs1
 
     log             yes;
 
-    patches         (motorBikeGroup);
+    patches         ($geometry_boundary);
     rho             rhoInf;      // Indicates incompressible
     rhoInf          1;           // Required when rho = rhoInf
     liftDir         (0 0 1);
@@ -36,7 +38,7 @@ binField1
     libs                    (fieldFunctionObjects);
     binModel                singleDirectionUniformBin;
     fields                  (forceCoeff);
-    patches                 (motorBikeGroup);
+    patches                 ($geometry_boundary);
     decomposePatchValues    true;
     CofR                    ${..forceCoeffs1.CofR};
 

@@ -6,6 +6,7 @@ geometry_name "motorBike";
 geometry_eMesh "motorBike.eMesh";
 geometry_layers "(motorBike).*";
 geometry_group "motorBikeGroup";
+geometry_boundary motorBikeGroup;
 
 //refinementBox definition
 

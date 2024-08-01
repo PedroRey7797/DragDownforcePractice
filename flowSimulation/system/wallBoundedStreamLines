@@ -6,6 +6,8 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 
+#include        "../include/settings"
+
 // Interpolate U to create near-wall UNear
 near
 {
@@ -27,7 +29,7 @@ near
     );
 
     // Patches/groups to sample (regular expressions)
-    patches         (motorBikeGroup);
+    patches         ($geometry_boundary);
 
     // Distance to sample
     distance        0.001;
@@ -67,7 +69,7 @@ wallBoundedStreamLines
 
         patchSeedCoeffs
         {
-            patches     (motorBikeGroup);
+            patches     ($geometry_boundary);
             axis        x;  //distance;
             maxPoints   20000;
         }
