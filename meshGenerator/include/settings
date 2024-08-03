@@ -1,49 +1,49 @@
 // For surfaceFeaturesExtract in ../system/surfaceFeaturesExtractDict and snappyHexMesh in ../system/snappyHexMeshDict
 
 //Geometry files
-geometry_file "motorBike.obj"; // Didn't found a solution to write only once the geo name. Currently, editing the four names when changing the goemetry file.
-geometry_name "motorBike";
-geometry_eMesh "motorBike.eMesh";
-geometry_layers "(motorBike).*";
-geometry_group "motorBikeGroup";
-geometry_boundary motorBikeGroup;
+geometry_file "ferrari_2000_V2.obj"; // Didn't found a solution to write only once the geo name. Currently, editing the four names when changing the goemetry file.
+geometry_name "ferrari_2000_V2";
+geometry_eMesh "ferrari_2000_V2.eMesh";
+geometry_layers "(ferrari_2000_V2).*";
+geometry_group "ferrari_2000_V2Group";
+geometry_boundary ferrari_2000_V2Group;
 
 //refinementBox definition
 
 // Defining the box. in for "inicial" and fi for "final"
-refinementBox_X_in -1.0;
-refinementBox_X_fi 8.0; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+refinementBox_X_in -3.0;
+refinementBox_X_fi 12.0; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
 
-refinementBox_Y_in -0.7;
-refinementBox_Y_fi 0.7; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+refinementBox_Y_in -2.5;
+refinementBox_Y_fi 2.5; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
 
 refinementBox_Z_in 0.0;
-refinementBox_Z_fi 2.5; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
+refinementBox_Z_fi 3; // The "final" point is used to set the "inside point". It would be weird, but it might be located outside de mesh, which could cause problems in some cases.
 
 // mesh definition
 
-refinement_level_surface 5;
+refinement_level_surface 7;
 refinement_level_box 3;
-cells_between_levels 5; // Used for castellated mesh
+cells_between_levels 3; // Used for castellated mesh
 
-N_layers 3; // Used for layers adition at lower wall (ground) and studied geometry.
+N_layers 2; // Used for layers adition at lower wall (ground) and studied geometry.
 
 // For blockMesh in ../system/blockMeshDict
 
 // Defining the box. in for "inicial" and fi for "final"
-X_in -5; // X : direction of moving
+X_in -7; // X : direction of moving
 X_fi 15; // X : direction of moving
 
-Y_in -4; // Y : Lateral direction
-Y_fi 4; // Y : Lateral direction
+Y_in -5; // Y : Lateral direction
+Y_fi 5; // Y : Lateral direction
 
 Z_in 0; // Z : Height direction
-Z_fi 8; // Z : Height direction
+Z_fi 6; // Z : Height direction
 
 // Defining the initial mesh size
-N_cells_X 20; // X : direction of moving
-N_cells_Y 8; // Y : Lateral direction
-N_cells_Z 8; // Z : Height direction
+N_cells_X 25; // X : direction of moving
+N_cells_Y 15; // Y : Lateral direction
+N_cells_Z 12; // Z : Height direction
 
 // For decomposePar in ../system/decomposeParDict
 N_procs 8;

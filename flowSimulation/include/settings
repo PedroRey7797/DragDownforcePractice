@@ -1,7 +1,28 @@
-# include "../../meshGenerator/include/settings" // Import names of geometry and groups from mesher.
+# include "../../meshGenerator/include/settings" // Import names of geometry and groups from mesher. Used in boundaries definitions in DragAndDownForcePractice/flowSimulation/0.org and DragAndDownForcePractice/flowSimulation/system/forceCoeffs
 
+// Boundary conditions in DragAndDownForcePractice/flowSimulation/0.org
 
-flowVelocity         (20 0 0);
+magU                 20; // Used also in DragAndDownForcePractice/flowSimulation/system/forceCoeffs.
+flowVelocity         ($magU 0 0); // X direction of moving. Vehicle facing -x
 pressure             0;
 turbulentKE          0.24;
 turbulentOmega       1.78;
+
+// For decomposePar in DragAndDownForcePractice/flowSimulation/system/decomposeParDict
+N_procs             8;
+
+// For controlDict in DragAndDownForcePractice/flowSimulation/system/controlDict
+N_iterations        500;
+write_interval      100;
+
+// For DragAndDownForcePractice/flowSimulation/system/forceCoeffs.
+
+lRef                1.42;
+Aref                0.75;
+
+// For DragAndDownForcePractice/flowSimulation/system/streamLines. Stream Lines definition.
+
+line_start          (-1.001 -0.05 0.0011);
+line_end            (-1.001 -0.05 1.0011);
+line_points         20;
+stream_line_steps   10000;
