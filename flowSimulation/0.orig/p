@@ -14,11 +14,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include        "include/initialConditions"
+#include        "../../include/settings" // It's not "../include/settings" because it will be run from processor* folders, which need on more ../
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform $pressure;
+internalField   uniform $pressure;  // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings
 
 boundaryField
 {
@@ -32,7 +32,7 @@ boundaryField
     outlet
     {
         type            fixedValue;
-        value           $internalField;
+        value           $internalField; // Parameters defined in this file
     }
 
     lowerWall
@@ -40,12 +40,20 @@ boundaryField
         type            zeroGradient;
     }
 
-    motorBikeGroup
+    $geometry_boundary  // Parameters imported from DragAndDownForcePractice/meshGenerator/include/settings sourced via DragAndDownForcePractice/flowSimulation/include/setting
     {
         type            zeroGradient;
     }
 
-    #include "include/frontBackUpperPatches"
+    upperWall
+    {
+        type slip;
+    }
+
+    frontAndBack
+    {
+        type slip;
+    }
 }
 
 

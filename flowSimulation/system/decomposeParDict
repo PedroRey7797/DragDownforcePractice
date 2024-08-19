@@ -14,7 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-numberOfSubdomains 6;
+#include        "../include/settings"
+
+numberOfSubdomains $N_procs; // Parameters imported from DragAndDownForcePractice/flowSimulation/include/settings
 
 method          scotch;
 
